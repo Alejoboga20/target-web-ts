@@ -1,0 +1,15 @@
+@import 'styles/_colors.scss';
+
+.layout {
+	display: flex;
+	height: 100vh;
+
+	&__left {
+		flex: 0.5;
+	}
+
+	&__right {
+		background-color: $primary;
+		flex: 0.5;
+	}
+}

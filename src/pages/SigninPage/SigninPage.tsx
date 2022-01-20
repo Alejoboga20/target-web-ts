@@ -1,3 +1,5 @@
+import { TwoSidesLayout } from '../../Layout/TwoSidesLayout/TwoSidesLayout';
+
 export const SigninPage = () => {
-	return <div>LoginPage</div>;
+	return <TwoSidesLayout leftElement={<p>LoginPage</p>} />;
 };
