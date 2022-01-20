@@ -1,3 +1,4 @@
+import { DefaultRightElement } from 'components/DefaultRightElement/DefaultRightElement';
 import styles from './TwoSidesLayout.module.scss';
 
 export const TwoSidesLayout = ({ rightElement, leftElement }: TwoSidesLayoutProps) => {
@@ -5,7 +6,7 @@ export const TwoSidesLayout = ({ rightElement, leftElement }: TwoSidesLayoutProp
 		<div className={styles.layout}>
 			<div className={styles.layout__left}>{leftElement}</div>
 			<div className={styles.layout__right}>
-				{rightElement ? rightElement : <p>No right Element</p>}
+				{rightElement ? rightElement : <DefaultRightElement />}
 			</div>
 		</div>
 	);

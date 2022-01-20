@@ -1,0 +1,14 @@
+.defaultRightElement {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__phone {
+		width: 25rem;
+		margin-bottom: -1rem;
+		img {
+			height: auto;
+			width: 100%;
+		}
+	}
+}
