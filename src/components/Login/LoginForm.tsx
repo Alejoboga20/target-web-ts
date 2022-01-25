@@ -1,6 +1,6 @@
 import { Button, InputText } from 'components';
 import useTranslation from 'hooks/useTranslation';
-import styles from './LoginForm.module.scss';
+import styles from './Login.module.scss';
 
 export const LoginForm = () => {
 	const t = useTranslation();

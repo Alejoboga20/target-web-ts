@@ -1,6 +1,6 @@
 import { ReactComponent as Smilies } from 'assets/smilies.svg';
 import useTranslation from 'hooks/useTranslation';
-import styles from './LoginForm.module.scss';
+import styles from './Login.module.scss';
 
 export const LoginMsg = () => {
 	const t = useTranslation();

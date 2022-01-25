@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { routePaths } from 'router';
 import useTranslation from 'hooks/useTranslation';
-import styles from './LoginForm.module.scss';
+import styles from './Login.module.scss';
 
 export const LoginLinks = () => {
 	const t = useTranslation();

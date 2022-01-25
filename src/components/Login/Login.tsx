@@ -1,5 +1,5 @@
 import { LoginForm, LoginMsg, LoginLinks } from './';
-import styles from './LoginForm.module.scss';
+import styles from './Login.module.scss';
 
 export const Login = () => {
 	return (
