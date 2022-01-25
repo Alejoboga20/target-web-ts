@@ -1,0 +1,56 @@
+@import '/src/styles/settings';
+
+.login {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding: 10% 5%;
+	height: 100%;
+
+	&__title {
+		font-size: $font-size-title;
+		letter-spacing: $letter-spacing-title;
+		margin: 0.3rem auto;
+		text-transform: uppercase;
+	}
+
+	&__subtitle {
+		font-size: $font-size-subtitle;
+		margin: 0.3rem auto;
+	}
+
+	&__description {
+		font-size: $font-size-description;
+		text-align: center;
+		width: 60%;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+		text-align: center;
+		width: 50%;
+	}
+
+	&__links {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		text-transform: uppercase;
+
+		&Facebook {
+			font-size: $font-size-link;
+			letter-spacing: $letter-spacing-link;
+		}
+
+		a {
+			margin: 0.5rem;
+		}
+
+		hr {
+			width: 70%;
+		}
+	}
+}

@@ -2,6 +2,17 @@
 	"en": {
 		"global": {
 			"pageTitle": "Target MVD"
+		},
+		"signin": {
+			"title": "Target MVD",
+			"subtitle": "Find people near you & Connect",
+			"description": "Create a target wherever on the map, specify your interest: Travel, Dating, Music, etc and start conecting with others who share your interest.",
+			"email": "Email",
+			"password": "Password",
+			"button": "Sign in",
+			"forgotPassword": "Forgot your password?",
+			"facebookLink": "Connect with facebook",
+			"signupLink": "Sign up"
 		}
 	}
 }
