@@ -11,11 +11,14 @@ export const DefaultRightElement = () => {
 				<img src={Iphone} alt='' className={styles.defaultRightElement__phoneBigImg} />
 				<img src={Play} alt='' className={styles.defaultRightElement__phoneSmallImg} />
 			</div>
-			<div className={styles.defaultRightElement__store}>
-				<img src={AppStore} alt='' />
-			</div>
-			<div className={styles.defaultRightElement__social}>
-				<img src={Social} alt='' />
+
+			<div className={styles.defaultRightElement__container}>
+				<div className={styles.defaultRightElement__store}>
+					<img src={AppStore} alt='' />
+				</div>
+				<div className={styles.defaultRightElement__social}>
+					<img src={Social} alt='' />
+				</div>
 			</div>
 		</div>
 	);
