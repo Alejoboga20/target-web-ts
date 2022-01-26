@@ -2,9 +2,15 @@
 
 .button {
 	background-color: black;
+	border: 1px solid black;
 	color: white;
-	text-transform: uppercase;
+	font-size: $font-size-button;
 	margin: 1rem 0;
 	padding: 0.8rem;
-	font-size: $font-size-button;
+	text-transform: uppercase;
+	transition: background-color 0.3s ease-in;
+
+	&:hover {
+		background-color: lighten($color: black, $amount: 20);
+	}
 }
