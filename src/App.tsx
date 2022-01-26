@@ -8,14 +8,8 @@ export const App = () => {
 			<div>
 				<Switch>
 					{routes.map((route) => (
-						<RouteProtector
-							path={route.path}
-							Component={route.Component}
-							exact={route.exact}
-							private={route.private}
-						/>
+						<RouteProtector key={route.path} {...route} />
 					))}
-
 					<Redirect to='/signin' />
 				</Switch>
 			</div>
