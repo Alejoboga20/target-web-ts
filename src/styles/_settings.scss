@@ -1,3 +1,4 @@
+//font size
 $font-size-title: 0.9rem;
 $font-size-subtitle: 0.8rem;
 $font-size-description: 0.785rem;
@@ -6,5 +7,13 @@ $font-size-label: 0.688rem;
 $font-size-small: 0.6rem;
 $font-size-link: 1rem;
 
+//letter spacing
 $letter-spacing-title: 0.18rem;
 $letter-spacing-link: 0.15rem;
+
+//breakpoints
+$xs: 0px;
+$sm: 600px;
+$md: 900px;
+$lg: 1200px;
+$xl: 1536px;
