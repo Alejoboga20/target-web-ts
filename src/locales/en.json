@@ -13,6 +13,11 @@
 			"forgotPassword": "Forgot your password?",
 			"facebookLink": "Connect with facebook",
 			"signupLink": "Sign up"
+		},
+		"signup": {
+			"title": "Sign up",
+			"button": "Sign up",
+			"signinLink": "SIGN IN"
 		}
 	}
 }
