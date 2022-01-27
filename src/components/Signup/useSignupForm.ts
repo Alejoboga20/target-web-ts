@@ -1,7 +1,7 @@
+import { genderOptions, PASSWORD_REGEX } from '../../constants/constants';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { PASSWORD_REGEX } from '../../constants/constants';
 
 const signupSchema = yup.object({
 	name: yup.string().required('Required Field').min(6),
@@ -17,6 +17,7 @@ const signupSchema = yup.object({
 		.string()
 		.oneOf([yup.ref('password')], 'Passwords must match')
 		.required('Required Field'),
+	gender: yup.string().oneOf(genderOptions),
 });
 
 export const useSignupForm = () => {
@@ -44,7 +45,7 @@ interface SignupFormInput {
 	email: string;
 	password: string;
 	passwordConfirmation: string;
-	//gender: Gender;
+	gender: Gender;
 }
 
 type Gender = 'Male' | 'Female' | 'Other';

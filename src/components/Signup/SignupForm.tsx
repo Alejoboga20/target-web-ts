@@ -4,6 +4,8 @@ import { routePaths } from 'router';
 import { useSignupForm } from './useSignupForm';
 import useTranslation from 'hooks/useTranslation';
 import styles from './Signup.module.scss';
+import { Select } from 'components/Select/Select';
+import { genderOptions } from '../../constants/constants';
 
 export const SignupForm = () => {
 	const { errors, handleSubmit, onSubmit, register } = useSignupForm();
@@ -42,6 +44,8 @@ export const SignupForm = () => {
 				name='passwordConfirmation'
 				error={errors.passwordConfirmation?.message}
 			/>
+
+			<Select label='GENDER' name='gender' options={genderOptions} register={register} />
 
 			<Button label='SIGN UP' type='submit' />
 
