@@ -31,5 +31,5 @@ interface InputTextProps {
 	name: string;
 	placeholder?: string;
 	register: UseFormRegister<any>;
-	type?: 'text' | 'password' | 'number';
+	type?: 'text' | 'password' | 'number' | 'email';
 }

@@ -9,7 +9,13 @@ export const LoginForm = () => {
 
 	return (
 		<form className={styles.login__form} onSubmit={handleSubmit(onSubmit)}>
-			<InputText label='EMAIL' register={register} name='email' error={errors.email?.message} />
+			<InputText
+				label='EMAIL'
+				type='password'
+				register={register}
+				name='email'
+				error={errors.email?.message}
+			/>
 			<InputText
 				label='PASSWORD'
 				type='password'
