@@ -1,0 +1,25 @@
+@import '/src/styles/settings';
+
+.signup {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding: 5%;
+	height: 100%;
+
+	&__title {
+		font-size: $font-size-big-title;
+		letter-spacing: $letter-spacing-title;
+		margin: 0.3rem auto;
+		text-transform: uppercase;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+		text-align: center;
+		width: 50%;
+	}
+}
