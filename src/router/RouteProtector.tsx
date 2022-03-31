@@ -1,19 +1,27 @@
+import { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { routePaths } from '.';
 import { Route as RouteProtectorProps } from '../interfaces/Router';
+import { AuthContext } from '../context/AuthContext';
 
 export const RouteProtector = ({ Component, ...props }: RouteProtectorProps) => {
-	const isAuthenticated: boolean = false;
+	const { authState } = useContext(AuthContext);
 
 	return props.private ? (
 		<>
-			{isAuthenticated ? (
+			{authState.isAuth ? (
 				<Route render={() => <Component />} {...props} />
 			) : (
 				<Redirect to={routePaths.signin} />
 			)}
 		</>
 	) : (
-		<Route render={() => <Component />} {...props} />
+		<>
+			{authState.isAuth ? (
+				<Redirect to={routePaths.home} />
+			) : (
+				<Route render={() => <Component />} {...props} />
+			)}
+		</>
 	);
 };
