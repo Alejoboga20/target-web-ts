@@ -17,7 +17,7 @@ const signupSchema = yup.object({
 		.string()
 		.oneOf([yup.ref('password')], 'Passwords must match')
 		.required('Required Field'),
-	gender: yup.string().oneOf(genderOptions),
+	gender: yup.string().oneOf(genderOptions).required('You must select one gender option'),
 });
 
 export const useSignupForm = () => {
