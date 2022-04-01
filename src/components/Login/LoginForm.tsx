@@ -5,13 +5,13 @@ import styles from './Login.module.scss';
 
 export const LoginForm = () => {
 	const t = useTranslation();
-	const { errors, handleSubmit, onSubmit, register } = useLoginForm();
+	const { error, errors, handleSubmit, onSubmit, register, isLoading } = useLoginForm();
 
 	return (
 		<form className={styles.login__form} onSubmit={handleSubmit(onSubmit)}>
 			<InputText
 				label='EMAIL'
-				type='password'
+				type='text'
 				register={register}
 				name='email'
 				error={errors.email?.message}
@@ -24,7 +24,9 @@ export const LoginForm = () => {
 				error={errors.password?.message}
 			/>
 
-			<Button label='SIGN IN' type='submit' />
+			<Button label='SIGN IN' type='submit' disabled={isLoading} />
+			{error && <small className={styles.login__error}>{error}</small>}
+
 			<a>
 				<small>{t('signin.forgotPassword')}</small>
 			</a>

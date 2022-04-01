@@ -1,8 +1,8 @@
 import styles from './Button.module.scss';
 
-export const Button = ({ label, type = 'button' }: ButtonProps) => {
+export const Button = ({ label, disabled = false, type = 'button' }: ButtonProps) => {
 	return (
-		<button className={styles.button} type={type}>
+		<button className={styles.button} type={type} disabled={disabled}>
 			{label}
 		</button>
 	);
@@ -10,5 +10,6 @@ export const Button = ({ label, type = 'button' }: ButtonProps) => {
 
 interface ButtonProps {
 	label: string;
+	disabled?: boolean;
 	type?: 'button' | 'reset' | 'submit';
 }
