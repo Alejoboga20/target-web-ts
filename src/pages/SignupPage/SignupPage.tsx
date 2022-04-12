@@ -1,4 +1,3 @@
-import { Signup } from 'components';
-import { TwoSidesLayout } from 'Layout/TwoSidesLayout/TwoSidesLayout';
+import { TwoSidesLayout, Signup } from 'components';
 
 export const SignupPage = () => <TwoSidesLayout leftElement={<Signup />} />;
