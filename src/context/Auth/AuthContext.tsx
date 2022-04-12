@@ -1,9 +1,15 @@
 import { createContext, useReducer, useState } from 'react';
 import { authReducer } from './authReducer';
 import { endpoints } from 'constants/constants';
-import { AuthContextProps, AuthState, SignInResponse, SignUpResponse } from 'interfaces/Auth/Auth';
-import { SignupFormInput } from 'components/Signup/useSignupForm';
-import { LoginFormInput } from 'components/Login/useLoginForm';
+import {
+	AuthContextProps,
+	AuthState,
+	LoginFormInput,
+	SignInResponse,
+	SignupFormInput,
+	SignUpResponse,
+} from 'interfaces/Auth/Auth';
+
 import targetApi from 'apis/targetApi';
 
 export const authInitialState: AuthState = {
@@ -68,7 +74,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 			dispatch({
 				type: 'signUpFailure',
 				payload: {
-					error: error.response.data.errors[0],
+					error: JSON.stringify(error.response.data.errors.full_messages[0], null, 4),
 				},
 			});
 		} finally {
@@ -77,7 +83,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 	};
 
 	return (
-		<AuthContext.Provider value={{ authState, singIn, signUp, isLoading }}>
+		<AuthContext.Provider value={{ authState, singIn, signUp, isLoading, dispatch }}>
 			{children}
 		</AuthContext.Provider>
 	);

@@ -1,4 +1,4 @@
-import { DefaultRightElement } from 'components/DefaultRightElement/DefaultRightElement';
+import { DefaultRightElement } from 'components';
 import styles from './TwoSidesLayout.module.scss';
 
 export const TwoSidesLayout = ({ rightElement, leftElement }: TwoSidesLayoutProps) => {

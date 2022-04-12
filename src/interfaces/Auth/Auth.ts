@@ -1,5 +1,4 @@
-import { LoginFormInput } from 'components/Login/useLoginForm';
-import { SignupFormInput } from 'components/Signup/useSignupForm';
+import { AuthAction } from 'context/Auth/authReducer';
 
 export interface SignInResponse {
 	data: Data;
@@ -54,6 +53,22 @@ export interface AuthState {
 export interface AuthContextProps {
 	authState: AuthState;
 	isLoading: boolean;
+	dispatch: React.Dispatch<AuthAction>;
 	singIn: ({ email, password }: LoginFormInput) => void;
 	signUp: ({ email, gender, username, password, passwordConfirmation }: SignupFormInput) => void;
+}
+
+export interface SignupFormInput {
+	username: string;
+	email: string;
+	password: string;
+	passwordConfirmation: string;
+	gender: Gender;
+}
+
+type Gender = 'Male' | 'Female' | 'Other';
+
+export interface LoginFormInput {
+	email: string;
+	password: string;
 }

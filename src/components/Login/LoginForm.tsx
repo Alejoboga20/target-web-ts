@@ -1,11 +1,36 @@
+import { useContext, useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button, InputText } from 'components';
-import { useLoginForm } from './useLoginForm';
+import { LoginFormInput } from 'interfaces/Auth/Auth';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginSchema } from 'schemas/auth';
+import { AuthContext } from 'context';
 import useTranslation from 'hooks/useTranslation';
 import styles from './Login.module.scss';
 
 export const LoginForm = () => {
 	const t = useTranslation();
-	const { error, errors, handleSubmit, onSubmit, register, isLoading } = useLoginForm();
+
+	const {
+		authState: { error },
+		singIn,
+		dispatch,
+		isLoading,
+	} = useContext(AuthContext);
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<LoginFormInput>({ mode: 'onTouched', resolver: yupResolver(loginSchema) });
+
+	const onSubmit: SubmitHandler<LoginFormInput> = ({ email, password }) => {
+		singIn({ email, password });
+	};
+
+	useEffect(() => {
+		dispatch({ type: 'cleanErrors' });
+	}, []);
 
 	return (
 		<form className={styles.login__form} onSubmit={handleSubmit(onSubmit)}>

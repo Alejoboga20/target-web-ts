@@ -1,10 +1,11 @@
 import { AuthState } from '../../interfaces/Auth/Auth';
 
-type AuthAction =
+export type AuthAction =
 	| { type: 'signInSuccess'; payload: { username: string } }
 	| { type: 'signInFailure'; payload: { error: string } }
 	| { type: 'signUpSuccess'; payload: { username: string } }
-	| { type: 'signUpFailure'; payload: { error: string } };
+	| { type: 'signUpFailure'; payload: { error: string } }
+	| { type: 'cleanErrors' };
 
 export const authReducer = (state: AuthState, action: AuthAction) => {
 	switch (action.type) {
@@ -30,6 +31,12 @@ export const authReducer = (state: AuthState, action: AuthAction) => {
 			return {
 				...state,
 				error: action.payload.error,
+			};
+
+		case 'cleanErrors':
+			return {
+				...state,
+				error: '',
 			};
 
 		default:

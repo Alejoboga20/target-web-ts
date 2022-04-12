@@ -1,5 +1,5 @@
-import { TwoSidesLayout } from '../../Layout/TwoSidesLayout/TwoSidesLayout';
 import { Login } from 'components';
+import { TwoSidesLayout } from 'Layout/TwoSidesLayout/TwoSidesLayout';
 import useTranslation from 'hooks/useTranslation';
 
 export const SigninPage = () => {
