@@ -1,3 +1,6 @@
 export { Button } from './Button/Button';
-export { Login } from './Login';
+export { DefaultRightElement } from './DefaultRightElement/DefaultRightElement';
 export { InputText } from './InputText/InputText';
+export { Login } from './Login';
+export { Select } from './Select/Select';
+export { Signup } from './Signup/Signup';
