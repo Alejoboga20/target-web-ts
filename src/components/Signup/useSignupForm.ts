@@ -1,10 +1,12 @@
-import { genderOptions, PASSWORD_REGEX } from '../../constants/constants';
+import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { genderOptions, PASSWORD_REGEX } from 'constants/constants';
+import { AuthContext } from 'context/Auth/AuthContext';
 import * as yup from 'yup';
 
 const signupSchema = yup.object({
-	name: yup.string().required('Required Field').min(6),
+	username: yup.string().required('Required Field').min(6),
 	email: yup.string().required('Required Field').email(),
 	password: yup
 		.string()
@@ -27,9 +29,14 @@ export const useSignupForm = () => {
 		formState: { errors },
 	} = useForm<SignupFormInput>({ mode: 'onTouched', resolver: yupResolver(signupSchema) });
 
-	const onSubmit: SubmitHandler<SignupFormInput> = (signupData) => {
-		/* TODO: Implement API Call */
-		console.log(signupData);
+	const {
+		authState: { error },
+		signUp,
+		isLoading,
+	} = useContext(AuthContext);
+
+	const onSubmit: SubmitHandler<SignupFormInput> = async (signupData) => {
+		signUp({ ...signupData });
 	};
 
 	return {
@@ -40,8 +47,8 @@ export const useSignupForm = () => {
 	};
 };
 
-interface SignupFormInput {
-	name: string;
+export interface SignupFormInput {
+	username: string;
 	email: string;
 	password: string;
 	passwordConfirmation: string;

@@ -17,8 +17,8 @@ export const SignupForm = () => {
 				label='NAME'
 				type='text'
 				register={register}
-				name='name'
-				error={errors.name?.message}
+				name='username'
+				error={errors.username?.message}
 			/>
 
 			<InputText
