@@ -1,5 +1,24 @@
+import { LoginFormInput } from 'components/Login/useLoginForm';
+import { SignupFormInput } from 'components/Signup/useSignupForm';
+
 export interface SignInResponse {
 	data: Data;
+}
+
+export interface SignUpResponse {
+	id: number;
+	email: string;
+	uid: string;
+	provider: string;
+	avatar: Avatar;
+	first_name: string;
+	last_name: string;
+	username: string;
+	created_at: string;
+	updated_at: string;
+	gender: string;
+	push_token: null;
+	allow_password_change: boolean;
 }
 
 export interface Data {
@@ -35,5 +54,6 @@ export interface AuthState {
 export interface AuthContextProps {
 	authState: AuthState;
 	isLoading: boolean;
-	singIn: (email: string, password: string) => void;
+	singIn: ({ email, password }: LoginFormInput) => void;
+	signUp: ({ email, gender, username, password, passwordConfirmation }: SignupFormInput) => void;
 }
