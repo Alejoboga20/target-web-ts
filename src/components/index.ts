@@ -1,3 +1,4 @@
+export { TwoSidesLayout } from './Layout/TwoSidesLayout/TwoSidesLayout';
 export { Button } from './Button/Button';
 export { DefaultRightElement } from './DefaultRightElement/DefaultRightElement';
 export { InputText } from './InputText/InputText';
