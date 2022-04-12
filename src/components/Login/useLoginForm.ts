@@ -23,7 +23,7 @@ export const useLoginForm = () => {
 	} = useContext(AuthContext);
 
 	const onSubmit: SubmitHandler<LoginFormInput> = ({ email, password }) => {
-		singIn(email, password);
+		singIn({ email, password });
 	};
 
 	return {
@@ -36,7 +36,7 @@ export const useLoginForm = () => {
 	};
 };
 
-interface LoginFormInput {
+export interface LoginFormInput {
 	email: string;
 	password: string;
 }
