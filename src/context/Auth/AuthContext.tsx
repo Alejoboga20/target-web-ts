@@ -44,12 +44,18 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 		}
 	};
 
-	const signUp = async ({ email, username, password, passwordConfirmation }: SignupFormInput) => {
+	const signUp = async ({
+		email,
+		username,
+		password,
+		passwordConfirmation,
+		gender,
+	}: SignupFormInput) => {
 		setIsLoading(true);
 
 		try {
 			const { data } = await targetApi.post<SignUpResponse>(endpoints.singUp, {
-				user: { email, password, passwordConfirmation, username },
+				user: { email, password, passwordConfirmation, username, gender },
 			});
 
 			dispatch({
