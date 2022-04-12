@@ -3,4 +3,4 @@ export { DefaultRightElement } from './DefaultRightElement/DefaultRightElement';
 export { InputText } from './InputText/InputText';
 export { Login } from './Login';
 export { Select } from './Select/Select';
-export { Signup } from './Signup/Signup';
+export { Signup } from './Signup';

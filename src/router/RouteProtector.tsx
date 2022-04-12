@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { routePaths } from '.';
 import { Route as RouteProtectorProps } from '../interfaces/Router';
-import { AuthContext } from '../context/Auth/AuthContext';
+import { AuthContext } from 'context/';
 
 export const RouteProtector = ({ Component, ...props }: RouteProtectorProps) => {
 	const { authState } = useContext(AuthContext);

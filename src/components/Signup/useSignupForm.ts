@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { genderOptions, PASSWORD_REGEX } from 'constants/constants';
-import { AuthContext } from 'context/Auth/AuthContext';
+import { AuthContext } from 'context';
 import * as yup from 'yup';
 
 const signupSchema = yup.object({

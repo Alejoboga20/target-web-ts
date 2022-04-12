@@ -1,8 +1,8 @@
+import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AuthContext } from 'context';
 import * as yup from 'yup';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/Auth/AuthContext';
 
 const loginSchema = yup.object({
 	email: yup.string().required().email(),
