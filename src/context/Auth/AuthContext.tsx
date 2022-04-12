@@ -4,11 +4,12 @@ import { endpoints } from 'constants/constants';
 import {
 	AuthContextProps,
 	AuthState,
+	LoginFormInput,
 	SignInResponse,
 	SignupFormInput,
 	SignUpResponse,
 } from 'interfaces/Auth/Auth';
-import { LoginFormInput } from 'components/Login/useLoginForm';
+
 import targetApi from 'apis/targetApi';
 
 export const authInitialState: AuthState = {

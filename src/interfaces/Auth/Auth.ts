@@ -1,4 +1,3 @@
-import { LoginFormInput } from 'components/Login/useLoginForm';
 import { AuthAction } from 'context/Auth/authReducer';
 
 export interface SignInResponse {
@@ -68,3 +67,8 @@ export interface SignupFormInput {
 }
 
 type Gender = 'Male' | 'Female' | 'Other';
+
+export interface LoginFormInput {
+	email: string;
+	password: string;
+}

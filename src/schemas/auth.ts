@@ -17,3 +17,8 @@ export const signupSchema = yup.object({
 		.required('Required Field'),
 	gender: yup.string().oneOf(genderOptions).required('You must select one gender option'),
 });
+
+export const loginSchema = yup.object({
+	email: yup.string().required().email(),
+	password: yup.string().required(),
+});
