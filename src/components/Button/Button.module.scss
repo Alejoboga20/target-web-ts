@@ -13,4 +13,9 @@
 	&:hover {
 		background-color: lighten($color: black, $amount: 20);
 	}
+
+	&:disabled {
+		background-color: lighten($color: black, $amount: 50);
+		cursor: progress;
+	}
 }

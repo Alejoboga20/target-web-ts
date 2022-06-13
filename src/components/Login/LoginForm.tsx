@@ -30,7 +30,7 @@ export const LoginForm = () => {
 
 	useEffect(() => {
 		dispatch({ type: 'cleanErrors' });
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<form className={styles.login__form} onSubmit={handleSubmit(onSubmit)}>

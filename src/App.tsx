@@ -1,7 +1,7 @@
-import { AuthProvider } from 'context/Auth/AuthContext';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import { routes } from './router';
-import { RouteProtector } from './router/RouteProtector';
+import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
+
+import { AuthProvider } from 'context';
+import { routes, RouteProtector } from './router';
 
 export const App = () => {
 	return (
