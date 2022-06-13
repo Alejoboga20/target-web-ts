@@ -1,3 +1,4 @@
+export { BurgerMenu } from './BurgerMenu/BurgerMenu';
 export { TwoSidesLayout } from './Layout/TwoSidesLayout/TwoSidesLayout';
 export { Button } from './Button/Button';
 export { DefaultRightElement } from './DefaultRightElement/DefaultRightElement';

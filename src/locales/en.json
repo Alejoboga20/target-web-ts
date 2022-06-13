@@ -3,6 +3,13 @@
 		"global": {
 			"pageTitle": "Target MVD"
 		},
+		"pages": {
+			"about": "About",
+			"contact": "Contact",
+			"home": "Home",
+			"signup": "Sign Up",
+			"signin": "Sign In"
+		},
 		"signin": {
 			"title": "Target MVD",
 			"subtitle": "Find people near you & Connect",
