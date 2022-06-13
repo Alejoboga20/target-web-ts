@@ -1,0 +1,34 @@
+@import '/src/styles/settings';
+
+.menu {
+  cursor: pointer;
+  font-size: $font-size-big-title;
+  position: absolute;
+
+  &__close {
+    font-weight: $font-weight-medium;
+    padding-right: 1rem;
+    
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+
+    a:hover {
+      font-weight: $font-weight-bold;
+      text-decoration: underline;
+    }
+  }
+
+  &__burgerClose {
+    letter-spacing: -2px;
+    line-height: 0.3;
+    padding: 1rem;
+  }
+
+  &__burgerOpen {
+    display: flex;
+    padding: 1rem;
+  }
+}
