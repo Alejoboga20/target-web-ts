@@ -19,6 +19,11 @@
       font-weight: $font-weight-bold;
       text-decoration: underline;
     }
+
+    p:hover {
+      font-weight: $font-weight-bold;
+      text-decoration: underline;
+    }
   }
 
   &__burgerClose {
