@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { routePaths } from 'router';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
 import styles from './BurgerMenu.module.scss';
 import useTranslation from 'hooks/useTranslation';
+import { ContactContext } from 'context';
 
 const BurgerClose = ({ handleOnClick }: BurgerProps) => (
 	<div className={styles.menu__burgerClose} onClick={() => handleOnClick(true)}>
@@ -15,9 +16,11 @@ const BurgerClose = ({ handleOnClick }: BurgerProps) => (
 );
 
 const BurgerOpen = ({ handleOnClick }: BurgerProps) => {
-	const ref = useRef<HTMLDivElement | null>(null);
-	useOnClickOutside(ref, handleOnClick);
 	const t = useTranslation();
+	const ref = useRef<HTMLDivElement | null>(null);
+	const { handleOpenContactModal } = useContext(ContactContext);
+
+	useOnClickOutside(ref, handleOnClick);
 
 	return (
 		<div className={styles.menu__burgerOpen} ref={ref}>
@@ -29,9 +32,9 @@ const BurgerOpen = ({ handleOnClick }: BurgerProps) => {
 				<Link className={styles.menu__link} to={routePaths.about}>
 					{t('pages.about')}
 				</Link>
-				<Link className={styles.menu__link} to={routePaths.contact}>
+				<p className={styles.menu__link} onClick={handleOpenContactModal}>
 					{t('pages.contact')}
-				</Link>
+				</p>
 			</div>
 		</div>
 	);

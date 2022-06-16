@@ -1,4 +1,4 @@
-import { BurgerMenu, DefaultRightElement } from 'components';
+import { BurgerMenu, ContactModal, DefaultRightElement } from 'components';
 import styles from './TwoSidesLayout.module.scss';
 
 export const TwoSidesLayout = ({ rightElement, leftElement }: TwoSidesLayoutProps) => {
@@ -9,6 +9,8 @@ export const TwoSidesLayout = ({ rightElement, leftElement }: TwoSidesLayoutProp
 			<div className={styles.layout__right}>
 				{rightElement ? rightElement : <DefaultRightElement />}
 			</div>
+
+			<ContactModal />
 		</div>
 	);
 };

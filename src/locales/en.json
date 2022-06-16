@@ -25,6 +25,10 @@
 			"title": "Sign up",
 			"button": "Sign up",
 			"signinLink": "SIGN IN"
+		},
+		"contact": {
+			"title": "Don’t be shy, drop us a line!",
+			"button": "Send"
 		}
 	}
 }
