@@ -6,8 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { ContactContext } from 'context';
 import { ReactComponent as Smilies } from 'assets/smilies.svg';
-import { Button, InputText } from 'components';
+import { Button, InputText, TextArea } from 'components';
 import { contactSchema } from 'schemas/contact';
+import styles from './ContactModal.module.scss';
 
 Modal.setAppElement('#root');
 
@@ -25,13 +26,13 @@ export const ContactModal = () => {
 
 	return (
 		<Modal isOpen={isContactModalOpen} onRequestClose={handleCloseContactModal}>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 				<Smilies />
 
 				<h3>{t('contact.title')}</h3>
 
 				<InputText error={errors.email?.message} label='EMAIL' name='email' register={register} />
-				<InputText
+				<TextArea
 					error={errors.message?.message}
 					label='MESSAGE'
 					name='message'

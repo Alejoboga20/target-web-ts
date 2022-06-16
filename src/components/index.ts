@@ -1,3 +1,4 @@
+export { TextArea } from './TextArea/TextArea';
 export { BurgerMenu } from './BurgerMenu/BurgerMenu';
 export { Button } from './Button/Button';
 export { ContactModal } from './ContactModal/ContactModal';

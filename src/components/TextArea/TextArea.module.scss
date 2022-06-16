@@ -1,0 +1,27 @@
+@import '/src/styles/settings';
+@import '/src/styles/colors';
+
+.inputText {
+	display: flex;
+	flex-direction: column;
+	margin: 0.5rem 0;
+
+	&__label {
+		font-size: $font-size-label;
+	}
+
+	&__input {
+		padding: 0.5rem;
+		border: solid 1px black;
+		border-radius: 0;
+
+		&Error {
+			border: solid 2px $error;
+		}
+	}
+
+	&__error {
+		color: $error;
+		font-size: $font-size-label;
+	}
+}
