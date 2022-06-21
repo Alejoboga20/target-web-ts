@@ -1,36 +1,47 @@
+import { useReducer, useState } from 'react';
+
 import targetApi from 'apis/targetApi';
-import { useState } from 'react';
 import { ContactContext } from './ContactContext';
-import { endpoints } from '../../constants/constants';
+import { endpoints } from 'constants/constants';
+import { contactReducer } from './contactReducer';
+import { IContact } from 'interfaces';
+
+export const inititialState: IContact.ContactState = {
+	isContactModalOpen: false,
+	isLoading: false,
+	isError: false,
+	isSuccess: false,
+};
 
 export const ContactProvider = ({ children }: ContactProviderProps) => {
-	const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
+	const [state, dispatch] = useReducer(contactReducer, inititialState);
 
-	const handleOpenContactModal = () => setIsContactModalOpen(true);
-	const handleCloseContactModal = () => setIsContactModalOpen(false);
+	const handleCloseContactModal = () => {
+		dispatch({ type: '[Contact] - Clean Create Question Form' });
+		dispatch({ type: '[Contact] - Close Contact Modal' });
+	};
+	const handleOpenContactModal = () => dispatch({ type: '[Contact] - Open Contact Modal' });
 
 	const createQuestion = async (email: string, body: string) => {
-		setIsLoading(true);
+		let response;
+		dispatch({ type: '[Contact] - Start Create Question' });
 
 		try {
-			const response = await targetApi.post(endpoints.questions, { email, body });
-
-			console.log(response);
+			response = await targetApi.post(endpoints.questions, { email, body });
 		} catch (error) {
+			throw new Error('An error has ocurred');
 		} finally {
-			setIsLoading(false);
+			dispatch({ type: '[Contact] - Finish Create Question', payload: response?.status });
 		}
 	};
 
 	return (
 		<ContactContext.Provider
 			value={{
-				isContactModalOpen,
-				handleOpenContactModal,
-				handleCloseContactModal,
+				...state,
 				createQuestion,
-				isLoading,
+				handleCloseContactModal,
+				handleOpenContactModal,
 			}}
 		>
 			{children}

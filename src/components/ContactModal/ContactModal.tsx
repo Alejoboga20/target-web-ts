@@ -14,8 +14,14 @@ Modal.setAppElement('#root');
 
 export const ContactModal = () => {
 	const t = useTranslation();
-	const { isContactModalOpen, handleCloseContactModal, createQuestion, isLoading } =
-		useContext(ContactContext);
+	const {
+		createQuestion,
+		isLoading,
+		isContactModalOpen,
+		handleCloseContactModal,
+		isError,
+		isSuccess,
+	} = useContext(ContactContext);
 
 	const {
 		register,
@@ -31,18 +37,35 @@ export const ContactModal = () => {
 			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 				<div className={styles.form__row}>
 					<Smilies />
-
 					<h3>{t('contact.title')}</h3>
 				</div>
 
-				<div className={styles.form__row}>
-					<InputText error={errors.email?.message} label='EMAIL' name='email' register={register} />
-				</div>
+				{isSuccess ? (
+					<h3>{t('contact.successMsg')}</h3>
+				) : isError ? (
+					<h3>{t('contact.successMsg')}</h3>
+				) : (
+					<>
+						<div className={styles.form__row}>
+							<InputText
+								error={errors.email?.message}
+								label='EMAIL'
+								name='email'
+								register={register}
+							/>
+						</div>
 
-				<div className={styles.form__row}>
-					<TextArea error={errors.body?.message} label='MESSAGE' name='body' register={register} />
-					<Button label={t('contact.button')} type='submit' disabled={isLoading} />
-				</div>
+						<div className={styles.form__row}>
+							<TextArea
+								error={errors.body?.message}
+								label='MESSAGE'
+								name='body'
+								register={register}
+							/>
+							<Button label={t('contact.button')} type='submit' disabled={isLoading} />
+						</div>
+					</>
+				)}
 			</form>
 		</Modal>
 	);
