@@ -14,7 +14,8 @@ Modal.setAppElement('#root');
 
 export const ContactModal = () => {
 	const t = useTranslation();
-	const { isContactModalOpen, handleCloseContactModal } = useContext(ContactContext);
+	const { isContactModalOpen, handleCloseContactModal, createQuestion, isLoading } =
+		useContext(ContactContext);
 
 	const {
 		register,
@@ -22,7 +23,8 @@ export const ContactModal = () => {
 		formState: { errors },
 	} = useForm<ContactFormInput>({ mode: 'onTouched', resolver: yupResolver(contactSchema) });
 
-	const onSubmit: SubmitHandler<ContactFormInput> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<ContactFormInput> = ({ email, body }) =>
+		createQuestion(email, body);
 
 	return (
 		<Modal isOpen={isContactModalOpen} onRequestClose={handleCloseContactModal}>
@@ -32,14 +34,9 @@ export const ContactModal = () => {
 				<h3>{t('contact.title')}</h3>
 
 				<InputText error={errors.email?.message} label='EMAIL' name='email' register={register} />
-				<TextArea
-					error={errors.message?.message}
-					label='MESSAGE'
-					name='message'
-					register={register}
-				/>
+				<TextArea error={errors.body?.message} label='MESSAGE' name='body' register={register} />
 
-				<Button label={t('contact.button')} type='submit' />
+				<Button label={t('contact.button')} type='submit' disabled={isLoading} />
 			</form>
 		</Modal>
 	);
@@ -47,5 +44,5 @@ export const ContactModal = () => {
 
 interface ContactFormInput {
 	email: string;
-	message: string;
+	body: string;
 }
