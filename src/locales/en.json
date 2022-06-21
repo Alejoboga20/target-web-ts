@@ -28,6 +28,8 @@
 		},
 		"contact": {
 			"title": "Don’t be shy, drop us a line!",
+			"successMsg": "Thanks for getting in touch! .We’ll get back to you as soon as we can.",
+			"errorMsg": "Opps! An error has occured while sending your message.",
 			"button": "Send"
 		}
 	}

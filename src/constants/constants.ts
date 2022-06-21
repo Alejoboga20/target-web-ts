@@ -5,4 +5,6 @@ export const PASSWORD_REGEX = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{
 export const endpoints = {
 	singUp: 'users',
 	signIn: 'users/sign_in',
+
+	questions: '/questions',
 };

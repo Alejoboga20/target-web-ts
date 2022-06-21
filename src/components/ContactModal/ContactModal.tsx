@@ -14,7 +14,14 @@ Modal.setAppElement('#root');
 
 export const ContactModal = () => {
 	const t = useTranslation();
-	const { isContactModalOpen, handleCloseContactModal } = useContext(ContactContext);
+	const {
+		createQuestion,
+		isLoading,
+		isContactModalOpen,
+		handleCloseContactModal,
+		isError,
+		isSuccess,
+	} = useContext(ContactContext);
 
 	const {
 		register,
@@ -22,24 +29,43 @@ export const ContactModal = () => {
 		formState: { errors },
 	} = useForm<ContactFormInput>({ mode: 'onTouched', resolver: yupResolver(contactSchema) });
 
-	const onSubmit: SubmitHandler<ContactFormInput> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<ContactFormInput> = ({ email, body }) =>
+		createQuestion(email, body);
 
 	return (
 		<Modal isOpen={isContactModalOpen} onRequestClose={handleCloseContactModal}>
 			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-				<Smilies />
+				<div className={styles.form__row}>
+					<Smilies />
+					<h3>{t('contact.title')}</h3>
+				</div>
 
-				<h3>{t('contact.title')}</h3>
+				{isSuccess ? (
+					<h3>{t('contact.successMsg')}</h3>
+				) : isError ? (
+					<h3>{t('contact.successMsg')}</h3>
+				) : (
+					<>
+						<div className={styles.form__row}>
+							<InputText
+								error={errors.email?.message}
+								label='EMAIL'
+								name='email'
+								register={register}
+							/>
+						</div>
 
-				<InputText error={errors.email?.message} label='EMAIL' name='email' register={register} />
-				<TextArea
-					error={errors.message?.message}
-					label='MESSAGE'
-					name='message'
-					register={register}
-				/>
-
-				<Button label={t('contact.button')} type='submit' />
+						<div className={styles.form__row}>
+							<TextArea
+								error={errors.body?.message}
+								label='MESSAGE'
+								name='body'
+								register={register}
+							/>
+							<Button label={t('contact.button')} type='submit' disabled={isLoading} />
+						</div>
+					</>
+				)}
 			</form>
 		</Modal>
 	);
@@ -47,5 +73,5 @@ export const ContactModal = () => {
 
 interface ContactFormInput {
 	email: string;
-	message: string;
+	body: string;
 }
