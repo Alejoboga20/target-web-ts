@@ -29,14 +29,20 @@ export const ContactModal = () => {
 	return (
 		<Modal isOpen={isContactModalOpen} onRequestClose={handleCloseContactModal}>
 			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-				<Smilies />
+				<div className={styles.form__row}>
+					<Smilies />
 
-				<h3>{t('contact.title')}</h3>
+					<h3>{t('contact.title')}</h3>
+				</div>
 
-				<InputText error={errors.email?.message} label='EMAIL' name='email' register={register} />
-				<TextArea error={errors.body?.message} label='MESSAGE' name='body' register={register} />
+				<div className={styles.form__row}>
+					<InputText error={errors.email?.message} label='EMAIL' name='email' register={register} />
+				</div>
 
-				<Button label={t('contact.button')} type='submit' disabled={isLoading} />
+				<div className={styles.form__row}>
+					<TextArea error={errors.body?.message} label='MESSAGE' name='body' register={register} />
+					<Button label={t('contact.button')} type='submit' disabled={isLoading} />
+				</div>
 			</form>
 		</Modal>
 	);
