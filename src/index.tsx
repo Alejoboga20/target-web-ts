@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { IntlProvider } from 'react-intl';
+import { BrowserRouter } from 'react-router-dom';
 import flatten from 'flat';
 import locales from 'locales/en.json';
 
@@ -16,7 +17,9 @@ const root = createRoot(container);
 root.render(
 	<React.StrictMode>
 		<IntlProvider messages={flatten(messages)} locale={'en'} defaultLocale={DEFAULT_LANGUAGE}>
-			<App />
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
 		</IntlProvider>
 	</React.StrictMode>
 );

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from 'context';
 import { Button, InputText, Select } from 'components';
 import { genderOptions } from 'constants/constants';
-import { routePaths } from 'router/index';
+import { routePaths } from 'router';
 import { signupSchema } from 'schemas/auth';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';

@@ -1,8 +1,6 @@
 import { Route } from '../interfaces/Router';
 import { AboutPage, HomePage, SigninPage, SignupPage } from '../pages';
 
-export { RouteProtector } from './RouteProtector';
-
 export const routePaths = {
 	about: '/about',
 	home: '/home',
