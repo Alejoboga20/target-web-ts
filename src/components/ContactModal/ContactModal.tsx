@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import Modal from 'react-modal';
 import useTranslation from 'hooks/useTranslation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,8 +8,6 @@ import { ReactComponent as Smilies } from 'assets/smilies.svg';
 import { Button, InputText, TextArea } from 'components';
 import { contactSchema } from 'schemas/contact';
 import styles from './ContactModal.module.scss';
-
-Modal.setAppElement('#root');
 
 export const ContactModal = () => {
 	const t = useTranslation();
@@ -33,41 +30,39 @@ export const ContactModal = () => {
 		createQuestion(email, body);
 
 	return (
-		<Modal isOpen={isContactModalOpen} onRequestClose={handleCloseContactModal}>
-			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-				<div className={styles.form__row}>
-					<Smilies />
-					<h3>{t('contact.title')}</h3>
-				</div>
+		<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+			<div className={styles.form__row}>
+				<Smilies />
+				<h3>{t('contact.title')}</h3>
+			</div>
 
-				{isSuccess ? (
-					<h3>{t('contact.successMsg')}</h3>
-				) : isError ? (
-					<h3>{t('contact.successMsg')}</h3>
-				) : (
-					<>
-						<div className={styles.form__row}>
-							<InputText
-								error={errors.email?.message}
-								label='EMAIL'
-								name='email'
-								register={register}
-							/>
-						</div>
+			{isSuccess ? (
+				<h3>{t('contact.successMsg')}</h3>
+			) : isError ? (
+				<h3>{t('contact.successMsg')}</h3>
+			) : (
+				<>
+					<div className={styles.form__row}>
+						<InputText
+							error={errors.email?.message}
+							label='EMAIL'
+							name='email'
+							register={register}
+						/>
+					</div>
 
-						<div className={styles.form__row}>
-							<TextArea
-								error={errors.body?.message}
-								label='MESSAGE'
-								name='body'
-								register={register}
-							/>
-							<Button label={t('contact.button')} type='submit' disabled={isLoading} />
-						</div>
-					</>
-				)}
-			</form>
-		</Modal>
+					<div className={styles.form__row}>
+						<TextArea
+							error={errors.body?.message}
+							label='MESSAGE'
+							name='body'
+							register={register}
+						/>
+						<Button label={t('contact.button')} type='submit' disabled={isLoading} />
+					</div>
+				</>
+			)}
+		</form>
 	);
 };
 

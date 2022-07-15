@@ -1,27 +1,34 @@
 import { useContext } from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { routePaths } from '.';
-import { Route as RouteProtectorProps } from '../interfaces/Router';
-import { AuthContext } from 'context/';
+import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../context/Auth/AuthContext';
+import { routePaths } from './AppRouter';
 
-export const RouteProtector = ({ Component, ...props }: RouteProtectorProps) => {
+export const RouteProtector = ({ isPrivateRoute = false, children }: RouteProtectorProps) => {
 	const { authState } = useContext(AuthContext);
+	const { isAuth } = authState;
 
-	return props.private ? (
+	return (
 		<>
-			{authState.isAuth ? (
-				<Route render={() => <Component />} {...props} />
+			{isPrivateRoute ? (
+				isAuth ? (
+					children
+				) : (
+					<Navigate to={routePaths.signin} />
+				)
+			) : isAuth ? (
+				<Navigate to={routePaths.home} />
 			) : (
-				<Redirect to={routePaths.signin} />
-			)}
-		</>
-	) : (
-		<>
-			{authState.isAuth ? (
-				<Redirect to={routePaths.home} />
-			) : (
-				<Route render={() => <Component />} {...props} />
+				children
 			)}
 		</>
 	);
 };
+
+interface RouteProtectorProps {
+	isPrivateRoute?: boolean;
+	children: JSX.Element | JSX.Element[];
+}
+
+/* 
+{isAuth ? children : <Navigate to={routePaths.signin} />}
+*/
