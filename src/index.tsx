@@ -1,19 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import locales from 'locales/en.json';
-import flatten from 'flat';
+import { createRoot } from 'react-dom/client';
 import { IntlProvider } from 'react-intl';
+import flatten from 'flat';
+import locales from 'locales/en.json';
+
 import { App } from './App';
 import './styles/styles.scss';
 
 const DEFAULT_LANGUAGE: string = 'en';
 const messages = locales['en'];
 
-ReactDOM.render(
+const container = document.getElementById('root')!;
+const root = createRoot(container);
+
+root.render(
 	<React.StrictMode>
 		<IntlProvider messages={flatten(messages)} locale={'en'} defaultLocale={DEFAULT_LANGUAGE}>
 			<App />
 		</IntlProvider>
-	</React.StrictMode>,
-	document.getElementById('root')
+	</React.StrictMode>
 );

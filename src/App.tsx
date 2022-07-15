@@ -1,23 +1,23 @@
-import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { AuthProvider, ContactProvider } from 'context';
-import { routes, RouteProtector } from './router';
+import { routes, RouteProtector, routePaths } from './router';
 
 export const App = () => {
 	return (
-		<Router>
-			<AuthProvider>
+		<AuthProvider>
+			<BrowserRouter>
 				<ContactProvider>
 					<div>
-						<Switch>
+						<Routes>
 							{routes.map((route) => (
 								<RouteProtector key={route.path} {...route} />
 							))}
-							<Redirect to='/signin' />
-						</Switch>
+							<Route path='/*' element={<Navigate to={routePaths.signin} />} />
+						</Routes>
 					</div>
 				</ContactProvider>
-			</AuthProvider>
-		</Router>
+			</BrowserRouter>
+		</AuthProvider>
 	);
 };
