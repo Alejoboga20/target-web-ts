@@ -33,7 +33,7 @@ export const Signup = () => {
 
 	useEffect(() => {
 		dispatch({ type: 'cleanErrors' });
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div className={styles.signup}>

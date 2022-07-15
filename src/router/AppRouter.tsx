@@ -39,6 +39,7 @@ export const AppRouter = () => {
 		<Routes>
 			{routes.map(({ path, element, isPrivateRoute }) => (
 				<Route
+					key={path}
 					path={path}
 					element={<RouteProtector isPrivateRoute={isPrivateRoute}>{element}</RouteProtector>}
 				/>
