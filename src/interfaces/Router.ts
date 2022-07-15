@@ -1,8 +1,4 @@
 export interface Route {
 	path: string;
-	Component: JSXComponent;
-	exact?: boolean;
-	private?: boolean;
+	element: JSX.Element;
 }
-
-type JSXComponent = () => JSX.Element;
