@@ -8,7 +8,7 @@ export const TwoSidesLayout = ({ rightElement, leftElement }: TwoSidesLayoutProp
 	const { isContactModalOpen } = useContext(ContactContext);
 
 	return (
-		<div className={styles.layout}>
+		<div className={`${styles.layout} ${isContactModalOpen ? styles.blurLayout : ''}`}>
 			<BurgerMenu />
 			<div className={styles.layout__left}>{leftElement}</div>
 			<div className={styles.layout__right}>
