@@ -1,14 +1,13 @@
 import { useContext, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { routePaths } from 'router';
-import { useOnClickOutside } from 'hooks/useOnClickOutside';
-import styles from './BurgerMenu.module.scss';
-import useTranslation from 'hooks/useTranslation';
 import { ContactContext } from 'context';
+import { routePaths } from 'router';
+import useTranslation from 'hooks/useTranslation';
+import styles from './BurgerMenu.module.scss';
 
 const BurgerClose = ({ handleOnClick }: BurgerProps) => (
-	<div className={styles.menu__burgerClose} onClick={() => handleOnClick(true)}>
+	<div className={styles.menu__burgerClose} onClick={handleOnClick}>
 		<div>---</div>
 		<div>---</div>
 		<div>---</div>
@@ -20,11 +19,11 @@ const BurgerOpen = ({ handleOnClick }: BurgerProps) => {
 	const ref = useRef<HTMLDivElement | null>(null);
 	const { handleOpenContactModal } = useContext(ContactContext);
 
-	useOnClickOutside(ref, handleOnClick);
+	//useOnClickOutside(ref, handleOnClick);
 
 	return (
 		<div className={styles.menu__burgerOpen} ref={ref}>
-			<div className={styles.menu__close} onClick={() => handleOnClick(false)}>
+			<div className={styles.menu__close} onClick={handleOnClick}>
 				X
 			</div>
 
@@ -43,7 +42,11 @@ const BurgerOpen = ({ handleOnClick }: BurgerProps) => {
 export const BurgerMenu = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-	const handleOnClick = (isOpen: boolean) => setIsMenuOpen(isOpen);
+	const handleOnClick = () => {
+		setIsMenuOpen(!isMenuOpen);
+	};
+
+	console.log({ isMenuOpen });
 
 	return (
 		<div className={styles.menu}>
@@ -57,5 +60,5 @@ export const BurgerMenu = () => {
 };
 
 interface BurgerProps {
-	handleOnClick: (isOpen: boolean) => void;
+	handleOnClick: () => void;
 }
