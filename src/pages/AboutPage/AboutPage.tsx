@@ -1,3 +1,9 @@
+import { TwoSidesLayout } from 'components';
+
 export const AboutPage = () => {
-	return <div>AboutPage</div>;
+	return (
+		<TwoSidesLayout>
+			<h1>About Page</h1>
+		</TwoSidesLayout>
+	);
 };
