@@ -1,7 +1,12 @@
-import { BurgerMenu, ContactModal, DefaultRightElement } from 'components';
+import { useContext } from 'react';
+
+import { BurgerMenu, ContactForm, DefaultRightElement, ModalRoot } from 'components';
+import { ContactContext } from '../../../context/Contact/ContactContext';
 import styles from './TwoSidesLayout.module.scss';
 
 export const TwoSidesLayout = ({ rightElement, leftElement }: TwoSidesLayoutProps) => {
+	const { isContactModalOpen } = useContext(ContactContext);
+
 	return (
 		<div className={styles.layout}>
 			<BurgerMenu />
@@ -10,7 +15,11 @@ export const TwoSidesLayout = ({ rightElement, leftElement }: TwoSidesLayoutProp
 				{rightElement ? rightElement : <DefaultRightElement />}
 			</div>
 
-			<ContactModal />
+			{isContactModalOpen && (
+				<ModalRoot>
+					<ContactForm />
+				</ModalRoot>
+			)}
 		</div>
 	);
 };
