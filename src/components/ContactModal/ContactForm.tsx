@@ -7,18 +7,12 @@ import { ContactContext } from 'context';
 import { ReactComponent as Smilies } from 'assets/smilies.svg';
 import { Button, InputText, TextArea } from 'components';
 import { contactSchema } from 'schemas/contact';
-import styles from './ContactModal.module.scss';
+import styles from './ContactForm.module.scss';
 
-export const ContactModal = () => {
+export const ContactForm = () => {
 	const t = useTranslation();
-	const {
-		createQuestion,
-		isLoading,
-		isContactModalOpen,
-		handleCloseContactModal,
-		isError,
-		isSuccess,
-	} = useContext(ContactContext);
+	const { createQuestion, isLoading, isError, isSuccess, handleCloseContactModal } =
+		useContext(ContactContext);
 
 	const {
 		register,
@@ -31,6 +25,10 @@ export const ContactModal = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+			<div className={styles.form__close} onClick={handleCloseContactModal}>
+				X
+			</div>
+
 			<div className={styles.form__row}>
 				<Smilies />
 				<h3>{t('contact.title')}</h3>

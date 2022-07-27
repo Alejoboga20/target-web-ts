@@ -1,3 +1,5 @@
+@import '/src/styles/settings';
+
 .form {
   align-items: center;
   display: flex;
@@ -9,5 +11,14 @@
 
   &__row {
     width: 100%;
+  }
+
+  &__close {
+    font-size: $font-size-big-title;
+    cursor: pointer;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
