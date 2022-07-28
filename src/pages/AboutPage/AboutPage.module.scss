@@ -1,0 +1,16 @@
+.about {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 6rem;
+  text-align: justify;
+
+  &__heading {
+    margin: 2rem auto;
+  }
+
+  &__description {
+    margin-bottom: 2rem
+  }
+}
