@@ -4,13 +4,13 @@ import { BurgerMenu, ContactForm, DefaultRightElement, ModalRoot } from 'compone
 import { ContactContext } from '../../../context/Contact/ContactContext';
 import styles from './TwoSidesLayout.module.scss';
 
-export const TwoSidesLayout = ({ rightElement, leftElement }: TwoSidesLayoutProps) => {
+export const TwoSidesLayout = ({ rightElement, children }: TwoSidesLayoutProps) => {
 	const { isContactModalOpen } = useContext(ContactContext);
 
 	return (
 		<div className={`${styles.layout} ${isContactModalOpen ? styles.blurLayout : ''}`}>
 			<BurgerMenu />
-			<div className={styles.layout__left}>{leftElement}</div>
+			<div className={styles.layout__left}>{children}</div>
 			<div className={styles.layout__right}>
 				{rightElement ? rightElement : <DefaultRightElement />}
 			</div>
@@ -26,5 +26,5 @@ export const TwoSidesLayout = ({ rightElement, leftElement }: TwoSidesLayoutProp
 
 interface TwoSidesLayoutProps {
 	rightElement?: JSX.Element | JSX.Element[];
-	leftElement: JSX.Element | JSX.Element[];
+	children: JSX.Element | JSX.Element[];
 }
