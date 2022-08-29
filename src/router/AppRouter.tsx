@@ -20,7 +20,7 @@ export const routes: IRoute[] = [
 	{
 		path: routePaths.home,
 		element: <HomePage />,
-		isPrivateRoute: true,
+		isPrivateRoute: false,
 	},
 	{
 		path: routePaths.signup,
