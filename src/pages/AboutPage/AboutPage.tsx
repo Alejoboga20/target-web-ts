@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 
 import { useTranslation } from 'hooks';
-import { Button, TwoSidesLayout } from 'components';
+import { TwoSidesLayout } from 'layout';
+import { Button } from 'components';
 import { routePaths } from 'router';
 import { ReactComponent as Smilies } from 'assets/smilies.svg';
 import styles from './AboutPage.module.scss';
