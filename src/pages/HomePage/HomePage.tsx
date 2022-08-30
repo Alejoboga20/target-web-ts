@@ -1,3 +1,4 @@
+import { Sidebar } from 'components';
 import { PlacesProvider } from 'context';
 import { MainLayout } from 'layout';
 
@@ -5,7 +6,7 @@ export const HomePage = () => {
 	return (
 		<PlacesProvider>
 			<MainLayout>
-				<div>HomePage</div>
+				<Sidebar />
 			</MainLayout>
 		</PlacesProvider>
 	);
