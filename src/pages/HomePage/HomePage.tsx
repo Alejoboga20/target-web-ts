@@ -1,9 +1,12 @@
+import { PlacesProvider } from 'context';
 import { MainLayout } from 'layout';
 
 export const HomePage = () => {
 	return (
-		<MainLayout>
-			<div>HomePage</div>
-		</MainLayout>
+		<PlacesProvider>
+			<MainLayout>
+				<div>HomePage</div>
+			</MainLayout>
+		</PlacesProvider>
 	);
 };
