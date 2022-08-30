@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import { BurgerMenu, ContactForm, DefaultRightElement, ModalRoot } from 'components';
-import { ContactContext } from '../../../context/Contact/ContactContext';
+import { ContactContext } from '../../context/Contact/ContactContext';
 import styles from './TwoSidesLayout.module.scss';
 
 export const TwoSidesLayout = ({ rightElement, children }: TwoSidesLayoutProps) => {

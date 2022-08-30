@@ -1,3 +1,13 @@
+import { Sidebar } from 'components';
+import { PlacesProvider } from 'context';
+import { MainLayout } from 'layout';
+
 export const HomePage = () => {
-	return <div>HomePage</div>;
+	return (
+		<PlacesProvider>
+			<MainLayout>
+				<Sidebar />
+			</MainLayout>
+		</PlacesProvider>
+	);
 };

@@ -1,0 +1,23 @@
+@import '/src/styles/colors';
+@import '/src/styles/settings.scss';
+
+.layout {
+  display: flex;
+  height: 100vh;
+
+  &__left {
+		flex: 0.3;
+
+		@media screen and (width < $md) {
+			flex: 1;
+		}
+	}
+
+	&__right {
+		flex: 0.7;
+
+		@media screen and (width < $md) {
+			display: none;
+		}
+	}
+}

@@ -1,0 +1,34 @@
+@import '/src/styles/settings';
+@import '/src/styles/colors';
+
+.welcome {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  padding: 3rem;
+
+  &__title {
+		font-size: $font-size-big-title;
+		letter-spacing: $letter-spacing-title;
+		margin: 0.3rem auto;
+	}
+
+	&__subtitle {
+		font-size: $font-size-title;
+		margin: 0.3rem auto;
+	}
+
+  &__list {
+    font-size: $font-size-description;
+    list-style-image: url('../../assets/Bullet.png');
+    margin: 2rem auto;
+    text-align: justify;
+
+    li {
+      margin: 1rem auto;
+    }
+    
+  }
+}
