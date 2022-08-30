@@ -46,8 +46,6 @@ export const BurgerMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
-	console.log({ isMenuOpen });
-
 	return (
 		<div className={styles.menu}>
 			{isMenuOpen ? (

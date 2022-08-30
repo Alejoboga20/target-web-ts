@@ -1,9 +1,9 @@
 import { AuthState } from '../../interfaces/Auth/Auth';
 
 export type AuthAction =
-	| { type: 'signInSuccess'; payload: { username: string } }
+	| { type: 'signInSuccess'; payload: { uid: string; client: string; token: string } }
 	| { type: 'signInFailure'; payload: { error: string } }
-	| { type: 'signUpSuccess'; payload: { username: string } }
+	| { type: 'signUpSuccess'; payload: { uid: string; client: string; token: string } }
 	| { type: 'signUpFailure'; payload: { error: string } }
 	| { type: 'cleanErrors' };
 
@@ -12,8 +12,8 @@ export const authReducer = (state: AuthState, action: AuthAction) => {
 		case 'signInSuccess':
 			return {
 				...state,
+				...action.payload,
 				isAuth: true,
-				userName: action.payload.username,
 			};
 		case 'signInFailure':
 			return {
@@ -24,8 +24,8 @@ export const authReducer = (state: AuthState, action: AuthAction) => {
 		case 'signUpSuccess':
 			return {
 				...state,
+				...action.payload,
 				isAuth: true,
-				userName: action.payload.username,
 			};
 		case 'signUpFailure':
 			return {
