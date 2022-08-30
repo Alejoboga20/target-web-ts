@@ -15,25 +15,41 @@ import targetApi from 'apis/targetApi';
 export const authInitialState: AuthState = {
 	isAuth: false,
 	error: '',
-	userName: '',
+	uid: '',
+	client: '',
+	token: '',
+};
+
+const stateInitializer = (): AuthState => {
+	const storagedState = localStorage.getItem('session');
+
+	if (!storagedState) return authInitialState;
+
+	const storagedAuthState = JSON.parse(storagedState) as AuthState;
+
+	return { ...storagedAuthState, isAuth: true };
 };
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-	const [authState, dispatch] = useReducer(authReducer, authInitialState);
+	const [authState, dispatch] = useReducer(authReducer, authInitialState, stateInitializer);
 	const [isLoading, setIsLoading] = useState(false);
+
+	console.log({ authState });
 
 	const singIn = async ({ email, password }: LoginFormInput) => {
 		setIsLoading(true);
 
 		try {
-			const response = await targetApi.post<SignInResponse>(endpoints.signIn, {
+			const { data, headers } = await targetApi.post<SignInResponse>(endpoints.signIn, {
 				user: { email, password },
 			});
 
 			dispatch({
 				type: 'signInSuccess',
 				payload: {
-					username: response.data.data.username,
+					uid: data.data.uid,
+					client: headers['client'],
+					token: headers['access-token'],
 				},
 			});
 		} catch (error: any) {
@@ -58,14 +74,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 		setIsLoading(true);
 
 		try {
-			const { data } = await targetApi.post<SignUpResponse>(endpoints.singUp, {
+			const { data, headers } = await targetApi.post<SignUpResponse>(endpoints.singUp, {
 				user: { email, password, passwordConfirmation, username, gender },
 			});
 
 			dispatch({
 				type: 'signUpSuccess',
 				payload: {
-					username: data.username,
+					uid: data.data.uid,
+					client: headers['client'],
+					token: headers['access-token'],
 				},
 			});
 		} catch (error: any) {

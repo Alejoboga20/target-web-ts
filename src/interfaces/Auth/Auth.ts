@@ -5,19 +5,7 @@ export interface SignInResponse {
 }
 
 export interface SignUpResponse {
-	id: number;
-	email: string;
-	uid: string;
-	provider: string;
-	avatar: Avatar;
-	first_name: string;
-	last_name: string;
-	username: string;
-	created_at: string;
-	updated_at: string;
-	gender: string;
-	push_token: null;
-	allow_password_change: boolean;
+	data: Data;
 }
 
 export interface Data {
@@ -47,7 +35,9 @@ export interface Normal {
 export interface AuthState {
 	isAuth: boolean;
 	error?: string;
-	userName: string;
+	uid: string;
+	client: string;
+	token?: string;
 }
 
 export interface AuthContextProps {
