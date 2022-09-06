@@ -10,4 +10,5 @@ export { Select } from './Select/Select';
 export { Sidebar } from './Sidebar/Sidebar';
 export { Signup } from './Signup/Signup';
 export { TextArea } from './TextArea/TextArea';
-export { Welcome } from './Welcome/Welcome';
+
+export * from './UserState';

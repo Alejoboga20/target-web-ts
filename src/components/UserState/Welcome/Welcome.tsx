@@ -1,5 +1,5 @@
 import { useTranslation } from 'hooks';
-import { Button } from '../';
+import { Button } from '../..';
 import { ReactComponent as Smilies } from 'assets/smilies.svg';
 import styles from './Welcome.module.scss';
 

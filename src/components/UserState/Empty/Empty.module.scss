@@ -1,0 +1,54 @@
+@import '/src/styles/_settings.scss';
+@import '/src/styles/_colors.scss';
+
+.empty {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  padding: 2rem;
+  text-align: center;
+
+  h4, h5 {
+    font-weight: $font-weight-medium;
+  }
+}
+
+.avatar {
+  margin-bottom: 1rem;
+
+  img {
+    background-color: $primary;
+    border-radius: 50%;
+    padding: 1rem;
+  }
+}
+
+.smallButtons {
+  margin-bottom: 1rem;
+
+  &__text {
+    cursor: pointer;
+    padding: 0.5rem;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.popular {
+  h5, p {
+    margin-bottom: 0.8rem;
+  }
+  img {
+    margin-right: 0.5rem;
+    vertical-align: bottom;
+  }
+}
+
+.smilies {
+  height: 3rem;
+  width: 3rem;
+}

@@ -1,5 +1,5 @@
-import { Welcome } from '../';
+import { Welcome, Empty } from '../';
 
 export const Sidebar = () => {
-	return <Welcome />;
+	return <Empty />;
 };
