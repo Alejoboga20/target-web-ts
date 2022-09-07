@@ -44,6 +44,13 @@
 				"firstStep": "Create a target by clicking wherever on the map, specify the ratio and and a topic: Travel, Dating, Music, etc.",
 				"secondStep": "TARGET will start a chat whenever you’ve a match.  You can always dismiss a conversation if you’re not interested.",
 				"button": "OK; GOT IT!"
+			},
+			"empty": {
+				"title": "TARGET",
+				"buttonEdit": "Edit",
+				"buttonLogout": "Logout",
+				"subtitle": "Create your first target by clicking wherever on the map.",
+				"pupolarTargets": "Psss!, these are the most popular targets:"
 			}
 		}
 	}

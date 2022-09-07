@@ -1,10 +1,13 @@
 import { AuthState } from '../../interfaces/Auth/Auth';
+import { authInitialState } from './AuthProvider';
 
 export type AuthAction =
 	| { type: 'signInSuccess'; payload: { uid: string; client: string; token: string } }
 	| { type: 'signInFailure'; payload: { error: string } }
 	| { type: 'signUpSuccess'; payload: { uid: string; client: string; token: string } }
 	| { type: 'signUpFailure'; payload: { error: string } }
+	| { type: 'signOutSuccess' }
+	| { type: 'signOutFailure'; payload: { error: string } }
 	| { type: 'cleanErrors' };
 
 export const authReducer = (state: AuthState, action: AuthAction) => {
@@ -28,6 +31,17 @@ export const authReducer = (state: AuthState, action: AuthAction) => {
 				isAuth: true,
 			};
 		case 'signUpFailure':
+			return {
+				...state,
+				error: action.payload.error,
+			};
+
+		case 'signOutSuccess':
+			return {
+				...state,
+				...authInitialState,
+			};
+		case 'signOutFailure':
 			return {
 				...state,
 				error: action.payload.error,

@@ -1,13 +1,15 @@
 import { Sidebar } from 'components';
-import { PlacesProvider } from 'context';
+import { PlacesProvider, UserStateProvider } from 'context';
 import { MainLayout } from 'layout';
 
 export const HomePage = () => {
 	return (
-		<PlacesProvider>
-			<MainLayout>
-				<Sidebar />
-			</MainLayout>
-		</PlacesProvider>
+		<UserStateProvider>
+			<PlacesProvider>
+				<MainLayout>
+					<Sidebar />
+				</MainLayout>
+			</PlacesProvider>
+		</UserStateProvider>
 	);
 };
