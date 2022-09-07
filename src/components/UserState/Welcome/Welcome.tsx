@@ -1,10 +1,16 @@
+import { useContext } from 'react';
+
 import { useTranslation } from 'hooks';
 import { Button } from '../..';
 import { ReactComponent as Smilies } from 'assets/smilies.svg';
 import styles from './Welcome.module.scss';
+import { UserStateContext } from 'context';
 
 export const Welcome = () => {
 	const t = useTranslation();
+	const { setState } = useContext(UserStateContext);
+
+	const handleOnClick = () => setState('empty');
 
 	return (
 		<div className={styles.welcome}>
@@ -17,7 +23,7 @@ export const Welcome = () => {
 				<li>{t('home.welcome.secondStep')}</li>
 			</ul>
 
-			<Button label={t('home.welcome.button')} />
+			<Button label={t('home.welcome.button')} onClick={handleOnClick} />
 		</div>
 	);
 };

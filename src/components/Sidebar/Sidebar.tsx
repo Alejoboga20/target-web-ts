@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
+import { UserStateContext } from 'context';
 import { Welcome, Empty } from '../';
 
-type userState = 'welcome' | 'empty';
-
-const Component = {
-	welcome: <Welcome />,
-	empty: <Empty />,
-};
-
 export const Sidebar = () => {
-	const [state, setState] = useState<userState>('welcome');
+	const { userState } = useContext(UserStateContext);
 
-	return Component[state];
+	switch (userState) {
+		case 'welcome':
+			return <Welcome />;
+		case 'empty':
+			return <Empty />;
+
+		default:
+			return <Welcome />;
+	}
 };
