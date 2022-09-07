@@ -52,7 +52,7 @@ export const LoginForm = () => {
 			<Button label='SIGN IN' type='submit' disabled={isLoading} />
 			{error && <small className={styles.login__error}>{error}</small>}
 
-			<a>
+			<a href='/'>
 				<small>{t('signin.forgotPassword')}</small>
 			</a>
 		</form>

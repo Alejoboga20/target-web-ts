@@ -9,7 +9,7 @@ export const LoginLinks = () => {
 	return (
 		<div className={styles.login__links}>
 			<div className={styles.login__linksFacebook}>
-				<a>{t('signin.facebookLink')}</a>
+				<a href='/'>{t('signin.facebookLink')}</a>
 			</div>
 			<hr />
 			<Link to={routePaths.signup}>{t('signin.signupLink')}</Link>
