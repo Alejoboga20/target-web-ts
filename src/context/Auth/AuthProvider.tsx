@@ -34,8 +34,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 	const [authState, dispatch] = useReducer(authReducer, authInitialState, stateInitializer);
 	const [isLoading, setIsLoading] = useState(false);
 
-	console.log({ authState });
-
 	const singIn = async ({ email, password }: LoginFormInput) => {
 		setIsLoading(true);
 
@@ -98,8 +96,26 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 		}
 	};
 
+	const signOut = async () => {
+		setIsLoading(true);
+
+		try {
+			await targetApi.delete(endpoints.signOut, { data: {} });
+			dispatch({ type: 'signOutSuccess' });
+		} catch (error: any) {
+			dispatch({
+				type: 'signOutFailure',
+				payload: {
+					error: JSON.stringify(error.response.data.errors.full_messages[0], null, 4),
+				},
+			});
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
 	return (
-		<AuthContext.Provider value={{ authState, singIn, signUp, isLoading, dispatch }}>
+		<AuthContext.Provider value={{ authState, singIn, signUp, signOut, isLoading, dispatch }}>
 			{children}
 		</AuthContext.Provider>
 	);

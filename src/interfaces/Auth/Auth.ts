@@ -46,6 +46,7 @@ export interface AuthContextProps {
 	dispatch: React.Dispatch<AuthAction>;
 	singIn: ({ email, password }: LoginFormInput) => void;
 	signUp: ({ email, gender, username, password, passwordConfirmation }: SignupFormInput) => void;
+	signOut: () => void;
 }
 
 export interface SignupFormInput {
